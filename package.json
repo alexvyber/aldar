@@ -1,0 +1,21 @@
+{
+	"name": "aldar",
+	"version": "0.0.0-dev.1",
+	"description": "",
+	"main": "index.js",
+	"type": "module",
+	"exports": {
+		".": "./index.ts"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"packageManager": "pnpm@10.9.0"
+}
