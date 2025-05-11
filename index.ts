@@ -12,9 +12,14 @@ export type Values<
 
 export type Unwrap<T> = T extends _<infer R> ? R : never;
 
-export function Enum<const T extends Record<string, EnumValue>>(
+export function Enum<const T extends Record<string, EnumValue>,
+Branded extends false | undefined = undefined,
+
+>(
 	obj: T,
-): { readonly [Key in keyof T as Key]: _<T[Key]> } {
+	_branded?: Branded,
+	
+): { readonly [Key in keyof T as Key]: Branded extends false ? Unwrap< _<T[Key]>> : _<T[Key]> } {
 	return Object.freeze(obj) as any;
 }
 
