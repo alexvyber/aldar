@@ -6,7 +6,7 @@ type EnumValue = string | number | symbol;
 export type Keys<T extends Record<string, _<EnumValue>>> = keyof T;
 
 export type Values<
-	T extends Record<string, _<EnumValue>>,
+	T extends Record<string, _<EnumValue> | EnumValue>,
 	Branded extends false | undefined = undefined,
 > = Branded extends false ? Unwrap<T[keyof T]> : T[keyof T];
 
