@@ -73,12 +73,12 @@ export function entries<
 	return Object.values(obj) as any;
 }
 
-export function validateValue<const T extends Record<string, EnumValue>>(
-	aldar: T,
-	value: (Values<T> | Values<T, false>) | ({} & string) | ({} & number),
-): boolean {
-	return Object.values(aldar).includes(value as any);
-}
+// export function validateValue<const T extends Record<string, EnumValue>, V extends (Values<T> | Values<T, false>) | ({} & string) | ({} & number)>(
+// 	aldar: T,
+// 	value: V ,
+// ): boolean {
+// 	return Object.values(aldar).includes(value as any);
+// }
 
 // const sym = Symbol("kek");
 // const Some = Enum({ 1: 1, one: "123", other: sym });
