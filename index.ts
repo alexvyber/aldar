@@ -12,14 +12,17 @@ export type Values<
 
 export type Unwrap<T> = T extends _<infer R> ? R : never;
 
-export function Enum<const T extends Record<string, EnumValue>,
-Branded extends false | undefined = undefined,
-
+export function Enum<
+	const T extends Record<string, EnumValue>,
+	Branded extends false | undefined = undefined,
 >(
 	obj: T,
 	_branded?: Branded,
-	
-): { readonly [Key in keyof T as Key]: Branded extends false ? Unwrap< _<T[Key]>> : _<T[Key]> } {
+): {
+	readonly [Key in keyof T as Key]: Branded extends false
+		? Unwrap<_<T[Key]>>
+		: _<T[Key]>;
+} {
 	return Object.freeze(obj) as any;
 }
 
@@ -70,6 +73,13 @@ export function entries<
 	return Object.values(obj) as any;
 }
 
+export function validateValue<const T extends Record<string, EnumValue>>(
+	aldar: T,
+	value: (Values<T> | Values<T, false>) | ({} & string) | ({} & number),
+): boolean {
+	return Object.values(aldar).includes(value as any);
+}
+
 // const sym = Symbol("kek");
 // const Some = Enum({ 1: 1, one: "123", other: sym });
 // const v = values(Some, false);
@@ -80,6 +90,8 @@ export function entries<
 // const m = mirror(Some);
 // const x = keys(Some);
 // function kek(arg: Values<typeof Some, false>) {}
+
+// const isValid = validateValue(Some, "123");
 // kek(v[3]);
 // kek(Some.other);
 // kek(sym);
