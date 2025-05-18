@@ -1,7 +1,7 @@
-declare const brandSymbol: unique symbol;
+// declare const brandSymbol: unique symbol;
 
-type _<T> = T & { [brandSymbol]: T };
-type EnumValue = string | number | symbol;
+type _<T extends string | number> = T & { brand: T };
+type EnumValue = string | number;
 
 export type Keys<T extends Record<string, _<EnumValue>>> = keyof T;
 
