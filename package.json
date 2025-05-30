@@ -1,28 +1,28 @@
 {
-	"name": "aldar",
-	"version": "0.0.0-dev.13",
-	"description": "",
-	"keywords": [],
-	"license": "ISC",
-	"author": "",
-	"type": "module",
-	"exports": {
-		"./package.json": "./package.json",
-		".": {
-			"types": "./dist/index.d.ts",
-			"import": "./dist/index.js",
-			"default": "./dist/index.js"
-		}
-	},
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"devDependencies": {
-		"tsc": "^2.0.4",
-		"typescript": "^5.8.3"
-	},
-	"packageManager": "pnpm@10.9.0",
-	"publishConfig": {
-		"access": "public"
-	}
+  "name": "aldar",
+  "version": "0.0.0-dev.13",
+  "description": "",
+  "keywords": [],
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "tsc": "^2.0.4",
+    "typescript": "^5.8.3"
+  },
+  "packageManager": "pnpm@10.9.0",
+  "publishConfig": {
+    "access": "public"
+  }
 }
