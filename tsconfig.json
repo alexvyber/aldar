@@ -9,6 +9,6 @@
     "sourceMap": true,
     "declaration": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/index.ts"],
   "exclude": ["**/*.spec.ts"]
 }
