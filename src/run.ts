@@ -13,6 +13,8 @@
 // Some.$.entries()
 // Some.$.mirror()
 
+// Some
+
 // const v = Some.$.values()
 // console.log("🚀 ~ v:", v)
 // const k = Some.$.keys()
