@@ -30,3 +30,4 @@ export declare function Enum<const T extends Record<string, EnumValue>>(
     }
   }
 >
+export {}
