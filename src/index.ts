@@ -1,13 +1,5 @@
 type EnumValue = string | number
 
-type Keys<T extends Record<string, EnumValue>> = keyof T
-
-type Values<T extends Record<string, EnumValue>> = T[keyof T]
-
-type Entries<T extends Record<string, EnumValue>> = Array<
-  { [Key in keyof T]: [Key, Values<Pick<T, Key>>] }[keyof T]
->
-
 type Prettify<T> = { -readonly [K in keyof T]: T[K] } & {}
 
 export function Enum<const T extends Record<string, EnumValue>>(
@@ -17,12 +9,12 @@ export function Enum<const T extends Record<string, EnumValue>>(
     $: {
       keys(): Array<keyof T>
       values(): Array<T[keyof T]>
-      entries(): Array<{ [Key in keyof T]: [Key, Values<Pick<T, Key>>] }[keyof T]>
+      entries(): Array<{ [Key in keyof T]: [Key, T[Key]] }[keyof T]>
       mirror(): { [Key in keyof T as T[Key]]: Key }
 
-      KeysType: Keys<T>
-      ValuesType: Values<T>
-      EntriesType: Entries<T>
+      KeysType: keyof T
+      ValuesType: T[keyof T]
+      EntriesType: Array<{ [Key in keyof T]: [Key, T[Key]] }[keyof T]>
     }
   }
 > {
@@ -44,13 +36,13 @@ export function Enum<const T extends Record<string, EnumValue>>(
 
 function mirror<const T extends Record<string, EnumValue>>(
   obj: T,
-): { readonly [Key in keyof T as T[Key]]: Key } {
+): { [Key in keyof T as T[Key]]: Key } {
   return Object.freeze(
     Object.fromEntries(Object.entries(obj).map(([left, right]) => [right, left])),
   ) as any
 }
 
-function values<const T extends Record<string, EnumValue> = {}>(obj: T): Array<Values<T>> {
+function values<const T extends Record<string, EnumValue> = {}>(obj: T): Array<T[keyof T]> {
   return Object.values(obj) as any
 }
 
@@ -58,6 +50,6 @@ function keys<const T extends Record<string, EnumValue>>(obj: T): Array<keyof T>
   return Object.keys(obj) as any
 }
 
-function entries<const T extends Record<string, EnumValue> = {}>(obj: T): Array<Values<T>> {
+function entries<const T extends Record<string, EnumValue> = {}>(obj: T): Array<T[keyof T]> {
   return Object.entries(obj) as any
 }
