@@ -12,16 +12,16 @@ export function Enum(obj) {
     });
     return Object.freeze(obj__);
 }
-function mirror(obj) {
+export function mirror(obj) {
     return Object.freeze(Object.fromEntries(Object.entries(obj).map(([left, right]) => [right, left])));
 }
-function values(obj) {
+export function values(obj) {
     return Object.values(obj);
 }
-function keys(obj) {
+export function keys(obj) {
     return Object.keys(obj);
 }
-function entries(obj) {
+export function entries(obj) {
     return Object.entries(obj);
 }
 //# sourceMappingURL=index.js.map

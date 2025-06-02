@@ -19,4 +19,12 @@ export declare function Enum<const T extends Record<string, EnumValue>>(obj: T):
         }[keyof T]>;
     };
 }>;
+export declare function mirror<const T extends Record<string, EnumValue>>(obj: T): {
+    [Key in keyof T as T[Key]]: Key;
+};
+export declare function values<const T extends Record<string, EnumValue> = {}>(obj: T): Array<T[keyof T]>;
+export declare function keys<const T extends Record<string, EnumValue>>(obj: T): Array<keyof T>;
+export declare function entries<const T extends Record<string, EnumValue> = {}>(obj: T): Array<{
+    [Key in keyof T]: [Key, T[Key]];
+}[keyof T]>;
 export {};

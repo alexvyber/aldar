@@ -34,7 +34,7 @@ export function Enum<const T extends Record<string, EnumValue>>(
   return Object.freeze(obj__) as any
 }
 
-function mirror<const T extends Record<string, EnumValue>>(
+export function mirror<const T extends Record<string, EnumValue>>(
   obj: T,
 ): { [Key in keyof T as T[Key]]: Key } {
   return Object.freeze(
@@ -42,14 +42,16 @@ function mirror<const T extends Record<string, EnumValue>>(
   ) as any
 }
 
-function values<const T extends Record<string, EnumValue> = {}>(obj: T): Array<T[keyof T]> {
+export function values<const T extends Record<string, EnumValue> = {}>(obj: T): Array<T[keyof T]> {
   return Object.values(obj) as any
 }
 
-function keys<const T extends Record<string, EnumValue>>(obj: T): Array<keyof T> {
+export function keys<const T extends Record<string, EnumValue>>(obj: T): Array<keyof T> {
   return Object.keys(obj) as any
 }
 
-function entries<const T extends Record<string, EnumValue> = {}>(obj: T): Array<T[keyof T]> {
+export function entries<const T extends Record<string, EnumValue> = {}>(
+  obj: T,
+): Array<{ [Key in keyof T]: [Key, T[Key]] }[keyof T]> {
   return Object.entries(obj) as any
 }
