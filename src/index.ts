@@ -2,6 +2,20 @@ type EnumValue = string | number
 
 type Prettify<T> = { -readonly [K in keyof T]: T[K] } & {}
 
+export function Enum<const T extends readonly EnumValue[]>(
+  obj: T,
+): { [Key in T[number]]: Key } & {
+  $: {
+    keys(): T
+    values(): T
+    entries(): { [Key in T[number]]: [Key, Key] }[T[number]]
+    mirror(): { [Key in T[number]]: Key }
+
+    KeysType: T
+    ValuesType: T
+    EntriesType: { [Key in T[number]]: [Key, Key] }[T[number]]
+  }
+}
 export function Enum<const T extends Record<string, EnumValue>>(
   obj: T,
 ): Prettify<
@@ -17,8 +31,16 @@ export function Enum<const T extends Record<string, EnumValue>>(
       EntriesType: Array<{ [Key in keyof T]: [Key, T[Key]] }[keyof T]>
     }
   }
-> {
-  const obj_ = { ...obj }
+>
+export function Enum(obj: EnumValue[] | Record<EnumValue, EnumValue>): any {
+  let obj_: Record<EnumValue, EnumValue> = null
+
+  if (Array.isArray(obj)) {
+    obj_ = Object.fromEntries(obj.map((entry) => [entry, entry]))
+  } else {
+    obj_ = { ...obj }
+  }
+
   const obj__ = {}
 
   Object.assign(obj__, {
