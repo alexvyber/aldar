@@ -1,23 +1,23 @@
-import { Enum } from "./index"
+import { Enum, extend } from "./index"
 
 console.time("start")
 // const Other = Enum(["Some", "Other", "Come"])
 const Other = Enum({ Some: "Some" })
 
-const One = Other.$.extend({ More: "More" })
+const One = extend(Other, { More: "More" })
 // console.log("🚀 ~ One:", One)
 
-const Lol = One.$.extend({ XXXX: "XXXX" })
+const Lol = extend(One, { XXXX: "XXXX" })
 console.log("🚀 ~ Lol:", Lol)
 
-const Pop = Lol.$.extend({ Ror: "ROr" }).$.extend(["123123", "ZZZZZ"])
+const Pop = extend(Lol, { Ror: "ROr" })
 console.log("🚀 ~ Pop:", Pop)
 
-const kik = Pop.$.extend(["LLLklasdasd"])
+const kik = extend(Pop, ["LLLklasdasd"])
 console.log("🚀 ~ kik:", kik)
 
-const loll = kik.$.extend({ LLL: "123123" })
-const lasdf = loll.$.extend({ qweqweqwe: 123123123123 })
+const loll = extend(kik, { LLL: "123123" })
+const lasdf = extend(loll, { qweqweqwe: 123123123123 })
 console.log("🚀 ~ lasdf:", lasdf)
 const qqq = lasdf.$.values()
 console.log("🚀 ~ qqq:", qqq)

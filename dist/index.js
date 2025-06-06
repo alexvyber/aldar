@@ -31,7 +31,7 @@ export function keys(obj) {
 export function entries(obj) {
     return Object.entries(obj);
 }
-function extend(aldar, obj) {
+export function extend(aldar, obj) {
     let obj_ = null;
     if (Array.isArray(obj)) {
         obj_ = Object.fromEntries(obj.map((entry) => [entry, entry]));
