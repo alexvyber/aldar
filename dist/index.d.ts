@@ -7,10 +7,100 @@ export declare function Enum<const T extends readonly EnumValue[]>(obj: T): {
 } & {
     $: Aldar<{
         [Key in T[number]]: Key;
-    }>;
+    }> & {
+        extend<const U extends readonly EnumValue[]>(arg: U): Prettify<{
+            [Key in T[number]]: Key;
+        } & {
+            [Key in U[number]]: Key;
+        } & {
+            $: Aldar<{
+                [Key in T[number]]: Key;
+            } & {
+                [Key in U[number]]: Key;
+            }> & {
+                extend<const U extends readonly EnumValue[]>(arg: U): Prettify<{
+                    [Key in T[number]]: Key;
+                } & {
+                    [Key in U[number]]: Key;
+                } & {
+                    $: Aldar<{
+                        [Key in T[number]]: Key;
+                    } & {
+                        [Key in U[number]]: Key;
+                    }>;
+                    extend<const U extends Record<string, EnumValue>>(arg: U): Prettify<{
+                        [Key in T[number]]: Key;
+                    } & U & {
+                        $: Aldar<{
+                            [Key in T[number]]: Key;
+                        } & U>;
+                    }>;
+                }>;
+            };
+        }>;
+        extend<const U extends Record<string, EnumValue>>(arg: U): Prettify<{
+            [Key in T[number]]: Key;
+        } & U & {
+            $: Aldar<{
+                [Key in T[number]]: Key;
+            } & U> & {
+                extend<const U extends readonly EnumValue[]>(arg: U): Prettify<{
+                    [Key in T[number]]: Key;
+                } & {
+                    [Key in U[number]]: Key;
+                } & {
+                    $: Aldar<{
+                        [Key in T[number]]: Key;
+                    } & {
+                        [Key in U[number]]: Key;
+                    }>;
+                    extend<const U extends Record<string, EnumValue>>(arg: U): Prettify<{
+                        [Key in T[number]]: Key;
+                    } & U & {
+                        $: Aldar<{
+                            [Key in T[number]]: Key;
+                        } & U>;
+                    }>;
+                }>;
+            };
+        }>;
+    };
 };
 export declare function Enum<const T extends Record<string, EnumValue>>(obj: T): Prettify<T & {
-    $: Aldar<T>;
+    $: Aldar<T> & {
+        extend<const U extends readonly EnumValue[]>(arg: U): Prettify<T & {
+            [Key in U[number]]: Key;
+        } & {
+            $: Aldar<T & {
+                [Key in U[number]]: Key;
+            }> & {
+                extend<const U extends readonly EnumValue[]>(arg: U): Prettify<T & {
+                    [Key in U[number]]: Key;
+                } & {
+                    $: Aldar<T & {
+                        [Key in U[number]]: Key;
+                    }>;
+                }>;
+                extend<const U extends Record<string, EnumValue>>(arg: U): Prettify<T & U & {
+                    $: Aldar<T & U>;
+                }>;
+            };
+        }>;
+        extend<const U extends Record<string, EnumValue>>(arg: U): Prettify<T & U & {
+            $: Aldar<T & U> & {
+                extend<const U extends readonly EnumValue[]>(arg: U): Prettify<T & {
+                    [Key in U[number]]: Key;
+                } & {
+                    $: Aldar<T & {
+                        [Key in U[number]]: Key;
+                    }>;
+                }>;
+                extend<const U extends Record<string, EnumValue>>(arg: U): Prettify<T & U & {
+                    $: Aldar<T & U>;
+                }>;
+            };
+        }>;
+    };
 }>;
 export declare function mirror<const T extends Record<string, EnumValue>>(obj: T): {
     [Key in keyof T as T[Key]]: Key;
@@ -20,16 +110,6 @@ export declare function keys<const T extends Record<string, EnumValue>>(obj: T):
 export declare function entries<const T extends Record<string, EnumValue> = {}>(obj: T): Array<{
     [Key in keyof T]: [Key, T[Key]];
 }[keyof T]>;
-export declare function extend<const T extends readonly EnumValue[], U extends object>(aldar: U, obj: T): Prettify<Omit<U, "$"> & {
-    [Key in T[number]]: Key;
-} & {
-    $: Aldar<{
-        [Key in T[number]]: Key;
-    } & Omit<U, "$">>;
-}>;
-export declare function extend<const T extends Record<string, EnumValue>, U extends object>(aldar: U, obj: T): Prettify<Omit<U, "$"> & T & {
-    $: Aldar<T & Omit<U, "$">>;
-}>;
 type Aldar<T extends Record<string, EnumValue>> = Prettify<{
     keys(): Array<keyof T>;
     values(): Array<T[keyof T]>;

@@ -1,10 +1,28 @@
-// import { Enum, extend } from "./index"
+import { Enum } from "./index"
 
-// console.time("start")
+console.time("start")
 // const Other = Enum(["Some", "Other", "Come"])
+const Other = Enum({ Some: "Some" })
 
-// const One = extend(Other, { More: "More" })
+const One = Other.$.extend({ More: "More" })
 // console.log("🚀 ~ One:", One)
+
+const Lol = One.$.extend({ XXXX: "XXXX" })
+console.log("🚀 ~ Lol:", Lol)
+
+const Pop = Lol.$.extend({ Ror: "ROr" }).$.extend(["123123", "ZZZZZ"])
+console.log("🚀 ~ Pop:", Pop)
+
+const kik = Pop.$.extend(["LLLklasdasd"])
+console.log("🚀 ~ kik:", kik)
+
+const loll = kik.$.extend({ LLL: "123123" })
+const lasdf = loll.$.extend({ qweqweqwe: 123123123123 })
+console.log("🚀 ~ lasdf:", lasdf)
+const qqq = lasdf.$.values()
+console.log("🚀 ~ qqq:", qqq)
+const qasd = lasdf.$.entries()
+console.log("🚀 ~ qasd:", qasd)
 
 // const Two = extend(One, ["Poppy", "Sexxy"])
 // console.log("🚀 ~ Two:", Two)
@@ -19,6 +37,8 @@
 
 // const vvv = Four.$.values()
 // console.log("🚀 ~ vvv:", vvv)
+
+// const mmm = Four.$.mirror()
 
 // Other.$.keys()
 // Other.$.entries()
