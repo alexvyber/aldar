@@ -1,18 +1,21 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.0.0-beta.6/schema.json",
   "vcs": {
     "enabled": false,
     "clientKind": "git",
     "useIgnoreFile": true
   },
+
   "files": {
     "ignoreUnknown": true,
-    "ignore": [
-      "src/payload-types.ts",
-      "src/app/(payload)/manager/importMap.js",
-      "package.json",
-      "node_modules",
-      ".next"
+    "includes": [
+      "**",
+      "!**/src/payload-types.ts",
+      "!**/src/app/(payload)/manager/importMap.js",
+      "!**/node_modules",
+      "!**/dist",
+      "!**/.next",
+      "!**/.react-email"
     ]
   },
   "formatter": {
@@ -22,17 +25,26 @@
     "bracketSpacing": true,
     "formatWithErrors": false,
     "indentWidth": 2,
-    "lineWidth": 100
+    "lineWidth": 120
   },
-  "organizeImports": {
-    "enabled": true
-  },
+
+  // "assist": { "actions": { "source": { "organizeImports": "on" } } },
+
   "linter": {
     "enabled": true,
     "rules": {
       "recommended": true,
       "style": {
-        "noVar": "off"
+        "noParameterAssign": "error",
+        "useAsConstAssertion": "error",
+        "useDefaultParameterLast": "error",
+        "useEnumInitializers": "error",
+        "useSelfClosingElements": "error",
+        "useSingleVarDeclarator": "error",
+        "noUnusedTemplateLiteral": "error",
+        "useNumberNamespace": "error",
+        "noInferrableTypes": "error",
+        "noUselessElse": "error"
       },
 
       "suspicious": {
@@ -40,7 +52,8 @@
           "fix": "unsafe",
           "level": "error",
           "options": { "allow": ["info", "error", "warn", "assert", "debug"] }
-        }
+        },
+        "noVar": "off"
       },
 
       "correctness": {
@@ -48,6 +61,7 @@
       }
     }
   },
+
   "javascript": {
     "formatter": {
       "quoteStyle": "double",
@@ -55,7 +69,7 @@
       "arrowParentheses": "always",
       "bracketSameLine": false,
       "attributePosition": "multiline",
-      "trailingCommas": "all",
+      "trailingCommas": "none",
       "bracketSpacing": true,
 
       "enabled": true

@@ -1,12 +1,28 @@
-// import { Enum } from "./index"
+// import { Enum, extend } from "./index"
 
+// console.time("start")
 // const Other = Enum(["Some", "Other", "Come"])
+
+// const One = extend(Other, { More: "More" })
+// console.log("🚀 ~ One:", One)
+
+// const Two = extend(One, ["Poppy", "Sexxy"])
+// console.log("🚀 ~ Two:", Two)
+
+// const Three = Two.$.extend(["Cunt"])
+// console.log("🚀 ~ Three:", Three)
+// const Four = Three.$.extend({ Pussy: "Fuck" })
+// console.log("🚀 ~ Four:", Four)
+
+// const vv = Two.$.values()
+// console.log("🚀 ~ vv:", vv)
+
+// const vvv = Four.$.values()
+// console.log("🚀 ~ vvv:", vvv)
 
 // Other.$.keys()
 // Other.$.entries()
 // Other.$.mirror()
-
-// Other
 
 // const v = Other.$.values()
 // console.log("🚀 ~ v:", v)
@@ -32,7 +48,7 @@
 //   Xxx: "Some",
 //   Qqq: "Other",
 //   1: "One",
-//   One: 1,
+//   One: 1
 //   //   1: 11111,
 //   //   _____: "QQQQQQQQQQ"
 // })
@@ -72,3 +88,5 @@
 // //   },
 // // })
 // // obj.kek()
+
+// console.timeEnd("start")
